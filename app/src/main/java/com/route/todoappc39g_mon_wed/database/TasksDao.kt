@@ -25,9 +25,9 @@ interface TasksDao {
     fun updateTask(task: Task)
 
     @Query("SELECT * FROM Todos")
-    fun getAllTasks(): List<Task>
+    fun getAllTasks(): MutableList<Task>
 
     // Where   == if
     @Query("SELECT * FROM Todos WHERE date = :dateTime")
-    fun getTasksByDate(dateTime: Date): List<Task>
+    fun getTasksByDate(dateTime: Date): MutableList<Task>
 }

@@ -5,13 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.route.todoappc39g_mon_wed.adapters.TasksAdapter
 import com.route.todoappc39g_mon_wed.clearTime
 import com.route.todoappc39g_mon_wed.database.TasksDatabase
 import com.route.todoappc39g_mon_wed.databinding.FragmentTasksBinding
+import com.zerobranch.layout.SwipeLayout
 import java.util.Calendar
 import java.util.Date
 
@@ -19,11 +19,13 @@ class TasksListFragment : Fragment() {
     lateinit var binding: FragmentTasksBinding
     lateinit var adapter: TasksAdapter
     lateinit var calendar: Calendar
+    lateinit var swipeLayout: SwipeLayout
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTasksBinding.inflate(inflater)
         return binding.root
     }
@@ -63,6 +65,7 @@ class TasksListFragment : Fragment() {
 
         }
         adapter.updateData(list)
+
     }
 
     fun getTasks() {
