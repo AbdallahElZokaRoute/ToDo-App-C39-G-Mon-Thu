@@ -9,6 +9,7 @@ android {
     compileSdk = 34
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
     defaultConfig {
         applicationId = "com.route.todoappc39g_mon_wed"
@@ -51,6 +52,13 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     //swipe to delete library
     implementation("com.github.zerobranch:SwipeLayout:1.3.1")
+    val lifecycle_version = "2.7.0"
+    val arch_version = "2.2.0"
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     //calendar
     implementation("com.github.prolificinteractive:material-calendarview:2.0.0")

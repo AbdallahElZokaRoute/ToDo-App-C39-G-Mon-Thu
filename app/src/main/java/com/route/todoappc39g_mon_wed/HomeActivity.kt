@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.route.todoappc39g_mon_wed.databinding.ActivityHomeBinding
-import com.route.todoappc39g_mon_wed.fragments.AddTaskBottomSheet
+import com.route.todoappc39g_mon_wed.fragments.addTask.AddTaskBottomSheet
 import com.route.todoappc39g_mon_wed.fragments.SettingsFragment
-import com.route.todoappc39g_mon_wed.fragments.TasksListFragment
+import com.route.todoappc39g_mon_wed.fragments.taskList.TasksListFragment
 
 class HomeActivity : AppCompatActivity() {
     // To Do App <-> Eng / Nadia
@@ -44,7 +44,8 @@ class HomeActivity : AppCompatActivity() {
             addTaskBottomSheet.onTaskAddedListener = object : OnTaskAddedListener {
                 override fun onTaskAdded() {
                     // Reload Fragment ->  TaskListFragment
-                    taskListFragment.getTasks()
+                    if (taskListFragment.isVisible)
+                        taskListFragment.getTasks()
                 }
             }
             addTaskBottomSheet.show(supportFragmentManager, null)

@@ -19,16 +19,16 @@ abstract class TasksDatabase : RoomDatabase() {
 
         // Singleton Pattern
         // Builder Pattern
-        fun getInstance(context: Context): TasksDatabase {
-            if (INSTANCE == null) {
+        fun getInstance(): TasksDatabase {
+            return INSTANCE!!
+        }
+
+        fun init(context: Context) {
+            if (INSTANCE == null)
                 INSTANCE = Room.databaseBuilder(context, TasksDatabase::class.java, DATABASE_NAME)
                     .fallbackToDestructiveMigration() // FallbackToDestructive Migration
                     .allowMainThreadQueries() //  allow main thread queries
                     .build()
-                // UI Thread - Main Thread -> User Clicks , User navigation
-                //
-            }
-            return INSTANCE!!
         }
     }
 

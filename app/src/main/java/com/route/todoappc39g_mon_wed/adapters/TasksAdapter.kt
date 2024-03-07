@@ -32,10 +32,9 @@ class TasksAdapter(private var tasksList: List<Task>?) : Adapter<TasksAdapter.Ta
 
     class TasksViewHolder(val binding: ItemTaskBinding) : ViewHolder(binding.root) {
         fun bind(task: Task) {
-            binding.title.text = task.title
-            val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val dateAsString = simpleDateFormat.format(task.date!!)
-            binding.time.text = dateAsString
+            binding.task = task
+            binding.executePendingBindings()
+            binding.invalidateAll()
         }
     }
 
